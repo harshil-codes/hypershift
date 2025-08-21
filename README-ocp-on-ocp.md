@@ -18,7 +18,7 @@ Due to these two requirements, a standalone Openshift virtualization cluster mus
 There are several architectures which can be used to reduce this control plane inefficiency. They are enumerated in the table below, with pros and cons:
 
 
-Architecture
+## Architecture
 Pros
 Cons
 “Rightsizing” physical nodes (using smaller/cheaper nodes for the control plane)
@@ -39,7 +39,7 @@ Lack of operational familiarity (new tool)
 
 This document will focus on the third architectural option: Hosted Control Place (HCP). 
 
-2. Introduction to OpenShift on OpenShift virtualization with Hosted Control Planes
+## 2. Introduction to OpenShift on OpenShift virtualization with Hosted Control Planes
 
 Terminology 
 
@@ -56,7 +56,7 @@ This subsection will detail the architecture and benefits of HCP, focusing on ho
 Block Diagram
 
 
-2.3 Why use OpenShift on OpenShift with HCP?
+### 2.3 Why use OpenShift on OpenShift with HCP?
 These are the specific scenarios where this deployment pattern is most beneficial:
 
 Bare-metal clusters for virtualization to ensure efficient use of large physical servers (high core-count, large RAM capacity).
@@ -65,11 +65,12 @@ Multi-tenancy environments for “cluster-as-a-servcice”
 Edge deployments
 Development and testing environments.
 PoC and pilot environments.
-3. Solution Architecture
-This section will provide a detailed architectural overview of the validated pattern, including diagrams and explanations of each component.
-3.1 High-Level Architecture Diagram
 
-3.2 Component Breakdown
+## 3. Solution Architecture
+This section will provide a detailed architectural overview of the validated pattern, including diagrams and explanations of each component.
+### 3.1 High-Level Architecture Diagram
+
+### 3.2 Component Breakdown
 The key components involved in this type of deployment are as follows:
 
 Management OpenShift Cluster (aka “Foundation Cluster” or “Hosting Cluster”): The primary Openshift cluster hosting the control planes of other Openshift clusters.
@@ -78,9 +79,9 @@ Guest OpenShift Clusters (aka “Hosted Clusters” or “Subordinate Clusters�
 Networking: Details on network connectivity and isolation between clusters.
 Storage: Storage considerations for both management and guest clusters.
 Identity and Access Management: How identity and access are managed across the clusters.
-4. Deployment Steps
+## 4. Deployment Steps
 This section will provide a step-by-step guide for deploying OpenShift on OpenShift using HCP.
-4.1 Prerequisites
+### 4.1 Prerequisites
 These are the necessary prerequisites for Openshift-on-Openshift with HCP:
 
 OpenShift version requirements
@@ -109,7 +110,7 @@ Required OpenShift operators on the hosted clusters
 LSO - local storage operator
 Any external storage operators for RWX shared storage - ODF, Netapp Trident, Portworx…
 
-4.2 Workflow Overview
+### 4.2 Workflow Overview
 
 The process for deploying Openshift on OpenShift virtualization with HCP is broken down into three steps, and each will be covered in detail. The three steps are:
 Create the Management/Hosting Cluster with HCP installed
@@ -125,10 +126,10 @@ Workflow artifacts and automation for step 2, the creation of Openshift virtuali
 https://validatedpatterns.io/patterns/virtualization-starter-kit/
 
 Workflow for step 3, creating standalone Openshift clusters is the normal Openshift on VMs deployment process.
-4.3 Installation of Hosting Cluster
+### 4.3 Installation of Hosting Cluster
 Instructions on how to install and configure the Hosting (Management/Foundation) Cluster:
 
-4.3.1 Create a foundations Openshift cluster on bare-metal servers
+#### 4.3.1 Create a foundations Openshift cluster on bare-metal servers
 The prerequisites and the deployment steps for deploying a compact OpenShift cluster ( 3 nodes acting as both masters and workers ) on bare metal hosts using the Assisted Installer are listed below.
 
 Create a standard bare-metal Openshift cluster with at least 3 worker nodes (a “compact cluster”)
@@ -194,22 +195,22 @@ Once the installation is complete and the cluster status shows "Ready," you can 
 Use the oc CLI tool with the downloaded kubeconfig to interact with your new OpenShift cluster.
 Verify cluster health and functionality by running oc get nodes and oc get co.
 
-4.3.2 Install the Hosted Control Plane  operator on the Hosting cluster
+#### 4.3.2 Install the Hosted Control Plane  operator on the Hosting cluster
 Install MCE (Multi-Cluster Engine) operator 
 Configure the MCE operator
 
-4.3.3 Use the MCE operator to deploy hosted clusters on bare metal
+#### 4.3.3 Use the MCE operator to deploy hosted clusters on bare metal
 NOTE: deployment of subordinate clusters with HCP via the MCE REQUIRES the use of the agent-based installer.
-4.4 Provisioning subordinate/hosted OpenShift Cluster(s) for virtualization
+### 4.4 Provisioning subordinate/hosted OpenShift Cluster(s) for virtualization
 Detailed steps on how to provision new guest OpenShift clusters using HCP, including:
 
 Cluster configuration options
 Network setup for guest clusters
 Storage provisioning
-4.5 Deploying Openshift clusters on Virtual Machines
+### 4.5 Deploying Openshift clusters on Virtual Machines
 
 Detailed steps on how to provision plain (container) Openshift clusters on VMs hosted on Openshift virtualization (created in step 4.4)
-4.6 Post-Deployment Configuration
+### 4.6 Post-Deployment Configuration
 
 Configuration steps after the initial deployment, such as:
 
@@ -225,30 +226,30 @@ Monitoring: OpenShift Container Platform includes a preconfigured, preinstalled,
 Logging: As a cluster administrator, you can deploy logging on an OpenShift Container Platform cluster, and use it to collect and aggregate node system audit logs, application container logs, and infrastructure logs. You can use logging to perform the following tasks:
 Forward logs to your chosen log outputs, including on-cluster, Red Hat managed log storage.
 Visualize your log data in the OpenShift Container Platform web console.
-5. Operational Considerations
+## 5. Operational Considerations
 This section will cover important operational aspects of managing OpenShift on OpenShift with HCP.
-5.1 Monitoring and Logging
+### 5.1 Monitoring and Logging
 Strategies for monitoring the health and performance of both the management and guest clusters, and centralized logging.
-5.2 Backup and Restore
+### 5.2 Backup and Restore
 Procedures for backing up and restoring OpenShift on OpenShift environments, including both control planes and data.
-5.3 Upgrades and Maintenance
+### 5.3 Upgrades and Maintenance
 Guidelines for performing upgrades and maintenance on both the management and guest clusters.
-5.4 Security Best Practices
+### 5.4 Security Best Practices
 Recommendations for securing the OpenShift on OpenShift deployment, including network segmentation, access control, and vulnerability management.
-6. Use Cases and Benefits
+## 6. Use Cases and Benefits
 This section will expand on the various use cases and the key benefits of implementing this validated pattern.
-6.1 Multi-Tenancy
+### 6.1 Multi-Tenancy
 How HCP enables efficient and secure multi-tenancy within OpenShift.
-6.2 Edge Computing
+### 6.2 Edge Computing
 The advantages of using this pattern for deploying OpenShift at the edge.
-6.3 Development and Testing Environments
+### 6.3 Development and Testing Environments
 How this pattern can accelerate development and testing cycles.
-7. Troubleshooting and Common Issues
+## 7. Troubleshooting and Common Issues
 This section will provide guidance on troubleshooting common issues encountered during deployment and operation.
-8. Conclusion
+## 8. Conclusion
 A summary of the solution's value proposition and a forward-looking statement regarding future enhancements or related patterns.
-9. Appendices
-9.1 References
+## 9. Appendices
+### 9.1 References
 File - Original reference link
 File - Relevant OpenShift documentation
 File - Hosted Control Plane documentation
