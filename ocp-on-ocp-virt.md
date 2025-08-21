@@ -49,7 +49,7 @@ This subsection will detail the architecture and benefits of HCP, focusing on ho
 
 **Block Diagram**
 
-![][image1]
+![](./hcp-compact.png)
 
 ## 2.3 Why use OpenShift on OpenShift with HCP?
 
@@ -68,7 +68,7 @@ This section will provide a detailed architectural overview of the validated pat
 
 ## 3.1 High-Level Architecture Diagram
 
-![][image2]
+![](./hcp-arch.png)
 
 ## 3.2 Component Breakdown
 
