@@ -282,6 +282,10 @@ The advantages of using this pattern for deploying OpenShift at the edge.
 
 How this pattern can accelerate development and testing cycles.
 
+## 6.4 Lab as a service
+
+Quick cluster builds for lab environments
+
 # 7\. Troubleshooting and Common Issues
 
 This section will provide guidance on troubleshooting common issues encountered during deployment and operation.
