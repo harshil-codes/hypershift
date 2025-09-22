@@ -285,6 +285,7 @@ How this pattern can accelerate development and testing cycles.
 ## 6.4 Lab as a service
 
 Quick cluster builds for lab environments
+![](./hcp.png)
 
 # 7\. Troubleshooting and Common Issues
 
