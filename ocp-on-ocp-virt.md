@@ -250,17 +250,13 @@ Configuration steps after the initial deployment, such as:
 
 This section will cover important operational aspects of managing OpenShift on OpenShift with HCP.
 
-## 5.1 Monitoring and Logging
+## 5.1 Backup and Restore
 
-Strategies for monitoring the health and performance of both the management and guest clusters, and centralized logging.
-
-## 5.2 Backup and Restore
-
-Procedures for backing up and restoring OpenShift on OpenShift environments, including both control planes and data.
+Organizations should adhere to their established internal standards and platform tooling where applicable. That said, the official Red Hat guidance recommends OpenShift API for Data Protection (OADP) as the preferred solution for performing backup and restore operations in OpenShift clusters. [See the official documentation for more details](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/backup-restore-overview)
 
 ## 5.3 Upgrades and Maintenance
 
-Guidelines for performing upgrades and maintenance on both the management and guest clusters.
+Cluster upgrades and maintenance should follow an organization’s established operational procedures and governance standards. In many environments, teams implement pre-upgrade and post-upgrade validation checks to validate platform readiness and workload health. These processes can be automated using tools such as Red Hat Ansible Automation Platform to improve consistency and operational efficiency. For step-by-step guidance on performing OpenShift upgrades, refer to the [official documentation](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/updating_clusters/understanding-openshift-updates-1)
 
 ## 5.4 Security Best Practices
 
